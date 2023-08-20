@@ -1,44 +1,42 @@
-#include <stdio.h>
+
+#include <unistd.h>
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+#include <unistd.h>
+
+void	rush(int x, int y)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < y)
+	{
+		j = 0;
+		while (j < x)
+		{
+			if ((i == 0 && j == 0) || (i == 0 && j == x - 1) || (i == y - 1 && j == 0) || (i == y - 1 && j == x - 1))
+				ft_putchar('o');
+			else if (i == 0 || i == y - 1)
+				ft_putchar('-');
+			else if (j == 0 || j == x - 1)
+				ft_putchar('|');
+			else
+				ft_putchar(' ');
+			j++;
+		}
+		ft_putchar('\n');
+		i++;
+	}
+}
 
 int main()
 {
-	int i, j, width, height;
-
-	printf("Enter width: ");
-
-	scanf("%d", &width);
-
-	printf("Enter height: ");
-
-	scanf("%d", &height);
-
-	i = 0;
-	while (i < height)
-	{
-		j = 0;
-		while (j < width)
-		{
-			if ((i == 0 && j == 0) || (i == 0 && j == width - 1) || (i == height - 1 && j == 0) || (i == height - 1 && j == width - 1))
-			{
-				printf("#");
-			}
-			else if (i == 0 || i == height - 1)
-			{
-				printf("-");
-			}
-			else if (j == 0 || j == width - 1)
-			{
-				printf("|");
-			}
-			else
-			{
-				printf(" ");
-			}
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	rush(50, 5);
 
 	return 0;
 }
